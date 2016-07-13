@@ -3,7 +3,8 @@ Mutation testing example with Cosmic Ray
 
 Initially we think that our test is good but CR reports:
 
-PYTHONPATH=. cosmic-ray run --baseline=10 burger.json sandwich -- tests/
+```
+$ PYTHONPATH=. cosmic-ray run --baseline=10 burger.json sandwich -- tests/
 $ cosmic-ray report burger.json 
 job ID 1:Outcome.SURVIVED:sandwich
 command: cosmic-ray worker sandwich number_replacer 0 unittest -- tests/
@@ -35,12 +36,13 @@ command: cosmic-ray worker sandwich number_replacer 1 unittest -- tests/
 total jobs: 2
 complete: 2 (100.00%)
 survival rate: 100.00%
-
+```
 
 
 So a simple code mutation wasn't caought by the existing tests. So we go ahead and
 add a second test and re-run CR:
 
+```
 $ cosmic-ray report burger.json 
 job ID 1:Outcome.KILLED:sandwich
 command: cosmic-ray worker sandwich number_replacer 0 unittest -- tests/
@@ -73,13 +75,13 @@ command: cosmic-ray worker sandwich number_replacer 1 unittest -- tests/
 total jobs: 2
 complete: 2 (100.00%)
 survival rate: 50.00%
-
+```
 
 We see that the first mutation was killed by the new test. However the second one
 remained so we need to add a new test for it. After the second test is updated the
 results are:
 
-
+```
 $ cosmic-ray report burger.json 
 job ID 1:Outcome.KILLED:sandwich
 command: cosmic-ray worker sandwich number_replacer 0 unittest -- tests/
@@ -113,7 +115,7 @@ command: cosmic-ray worker sandwich number_replacer 1 unittest -- tests/
 total jobs: 2
 complete: 2 (100.00%)
 survival rate: 0.00%
-
+```
 
 
 
