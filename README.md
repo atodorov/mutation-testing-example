@@ -47,10 +47,13 @@ add a second test in
 and re-run CR:
 
 ```
-$ cosmic-ray report burger.json 
 job ID 1:Outcome.KILLED:sandwich
 command: cosmic-ray worker sandwich number_replacer 0 unittest -- tests/
-['test_default_burger_creation_and_check_default_values (test_burger.TestBurger)', 'Traceback (most recent call last):\n  File "/home/atodorov/private/repos/github/mutation-testing-example/tests/test_burger.py", line 12, in test_default_burger_creation_and_check_default_values\n    self.assertEqual(burger[\'ham\'], 1)\nAssertionError: 2 != 1\n']
+Traceback (most recent call last):
+  File "/home/atodorov/private/repos/github/mutation-testing-example/tests/test_burger.py", line 12, in test_default_burger_creation_and_check_default_values
+    self.assertEqual(burger['ham'], 1)
+AssertionError: 2 != 1
+
 --- mutation diff ---
 --- a/home/atodorov/private/repos/github/mutation-testing-example/sandwich/__init__.py
 +++ b/home/atodorov/private/repos/github/mutation-testing-example/sandwich/__init__.py
@@ -87,10 +90,13 @@ remained so we need to add a new test for it,
 After the second test is updated the results are:
 
 ```
-$ cosmic-ray report burger.json 
 job ID 1:Outcome.KILLED:sandwich
 command: cosmic-ray worker sandwich number_replacer 0 unittest -- tests/
-['test_default_burger_creation_and_check_default_values (test_burger.TestBurger)', 'Traceback (most recent call last):\n  File "/home/atodorov/private/repos/github/mutation-testing-example/tests/test_burger.py", line 12, in test_default_burger_creation_and_check_default_values\n    self.assertEqual(burger[\'ham\'], 1)\nAssertionError: 2 != 1\n']
+Traceback (most recent call last):
+  File "/home/atodorov/private/repos/github/mutation-testing-example/tests/test_burger.py", line 12, in test_default_burger_creation_and_check_default_values
+    self.assertEqual(burger['ham'], 1)
+AssertionError: 2 != 1
+
 --- mutation diff ---
 --- a/home/atodorov/private/repos/github/mutation-testing-example/sandwich/__init__.py
 +++ b/home/atodorov/private/repos/github/mutation-testing-example/sandwich/__init__.py
@@ -105,7 +111,11 @@ command: cosmic-ray worker sandwich number_replacer 0 unittest -- tests/
 
 job ID 2:Outcome.KILLED:sandwich
 command: cosmic-ray worker sandwich number_replacer 1 unittest -- tests/
-['test_default_burger_creation_and_check_default_values (test_burger.TestBurger)', 'Traceback (most recent call last):\n  File "/home/atodorov/private/repos/github/mutation-testing-example/tests/test_burger.py", line 13, in test_default_burger_creation_and_check_default_values\n    self.assertEqual(burger[\'eggs\'], 0)\nAssertionError: 1 != 0\n']
+Traceback (most recent call last):
+  File "/home/atodorov/private/repos/github/mutation-testing-example/tests/test_burger.py", line 13, in test_default_burger_creation_and_check_default_values
+    self.assertEqual(burger['eggs'], 0)
+AssertionError: 1 != 0
+
 --- mutation diff ---
 --- a/home/atodorov/private/repos/github/mutation-testing-example/sandwich/__init__.py
 +++ b/home/atodorov/private/repos/github/mutation-testing-example/sandwich/__init__.py
@@ -121,6 +131,3 @@ total jobs: 2
 complete: 2 (100.00%)
 survival rate: 0.00%
 ```
-
-
-
