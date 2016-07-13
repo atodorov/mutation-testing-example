@@ -10,6 +10,7 @@ class TestBurger(unittest.TestCase):
         burger = sandwich.Burger().make_sandwich()
         self.assertEqual(burger['type'], 'burger')
         self.assertEqual(burger['ham'], 1)
+        self.assertEqual(burger['eggs'], 0)
 
 if __name__ == "__main__":
     unittest.main()
