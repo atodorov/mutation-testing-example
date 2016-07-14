@@ -11,6 +11,7 @@ class TestBurger(unittest.TestCase):
         self.assertEqual(burger['type'], 'burger')
         self.assertEqual(burger['ham'], 1)
         self.assertEqual(burger['eggs'], 0)
+        self.assertEqual(burger['mayo'], True)
 
 if __name__ == "__main__":
     unittest.main()
